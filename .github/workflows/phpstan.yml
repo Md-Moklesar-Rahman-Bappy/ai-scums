@@ -13,10 +13,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: shivammathur/setup-php@v2
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
         with:
           php-version: 8.3
 
-      - run: composer install
+      - name: Install Dependencies
+        run: composer install --prefer-dist --no-progress
 
-      - run: vendor/bin/phpstan analyse
+      - name: Verify PHPStan
+        run: ls -la vendor/bin
+
+      - name: Run PHPStan
+        run: vendor/bin/phpstan analyse
