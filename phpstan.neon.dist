@@ -8,14 +8,10 @@ parameters:
         - app
         - database
 
-    tmpDir: storage/framework/cache/phpstan
-
-    checkMissingIterableValueType: true
     treatPhpDocTypesAsCertain: true
-    reportUnmatchedIgnoredErrors: true
 
     excludePaths:
         analyse:
-            - bootstrap/cache/*
-            - storage/*
             - vendor/*
+            - storage/*
+            - bootstrap/cache/*
