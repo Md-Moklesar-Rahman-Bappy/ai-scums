@@ -29,14 +29,20 @@ class AdminEnrollmentReportTool extends BaseDataTool implements AIDataToolInterf
 
     public function execute(User $user): array
     {
-        $byClass = Student::query()->whereNotNull('class_id')
+        $tenantId = $this->tenantId();
+
+        if ($tenantId === null) {
+            return ['summary' => 'No institution in scope.', 'data' => []];
+        }
+
+        $byClass = Student::query()->where('institution_id', $tenantId)->whereNotNull('class_id')
             ->selectRaw('class_id, count(*) as c')
             ->groupBy('class_id')->with('schoolClass')
             ->get()
             ->mapWithKeys(fn ($s) => [$s->schoolClass?->name ?? 'N/A' => $s->c])
             ->all();
 
-        $byProgram = Student::query()->whereNotNull('program_id')
+        $byProgram = Student::query()->where('institution_id', $tenantId)->whereNotNull('program_id')
             ->selectRaw('program_id, count(*) as c')
             ->groupBy('program_id')->with('program')
             ->get()

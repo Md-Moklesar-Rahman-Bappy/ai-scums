@@ -30,6 +30,7 @@ class AIProviderManager
         'claude' => ClaudeProvider::class,
         'gemini' => GeminiProvider::class,
         'local' => LocalProvider::class,
+        'mock' => Providers\MockProvider::class,
     ];
 
     /**

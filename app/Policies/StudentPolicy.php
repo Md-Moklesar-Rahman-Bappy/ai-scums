@@ -29,25 +29,31 @@ class StudentPolicy
 
     public function viewAny(User $user): bool
     {
+        // Students and parents must never obtain a listing of all students; they
+        // may only view their own/linked record via the `view` ability. Listing
+        // is restricted to staff roles that legitimately manage cohorts.
+        if ($user->hasRole(['student', 'parent'])) {
+            return false;
+        }
+
         return $user->can('students.view');
     }
 
     public function view(User $user, Student $student): bool
     {
-        if ($user->can('students.view')) {
-            return true;
+        // Students and parents may only view their own / linked record. The
+        // generic `students.view` permission is intentionally NOT sufficient for
+        // these roles, otherwise a parent could read every student in the
+        // tenant via the show route.
+        if ($user->hasRole(['student', 'parent'])) {
+            if ($user->student && $user->student->id === $student->id) {
+                return true;
+            }
+
+            return $user->parent && $user->parent->students->contains($student);
         }
 
-        // Students/parents may view their own record.
-        if ($user->student && $user->student->id === $student->id) {
-            return true;
-        }
-
-        if ($user->parent && $user->parent->students->contains($student)) {
-            return true;
-        }
-
-        return false;
+        return $user->can('students.view');
     }
 
     public function create(User $user): bool

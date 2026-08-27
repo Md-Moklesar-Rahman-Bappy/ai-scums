@@ -29,7 +29,15 @@ class AdminOutstandingFeesTool extends BaseDataTool implements AIDataToolInterfa
 
     public function execute(User $user): array
     {
-        $fees = Fee::whereIn('status', ['pending', 'partial', 'overdue'])->get();
+        $tenantId = $this->tenantId();
+
+        if ($tenantId === null) {
+            return ['summary' => 'No institution in scope.', 'data' => []];
+        }
+
+        $fees = Fee::where('institution_id', $tenantId)
+            ->whereIn('status', ['pending', 'partial', 'overdue'])
+            ->get();
 
         $totalDue = $fees->sum(fn ($f) => $f->amount - $f->paid_amount);
 

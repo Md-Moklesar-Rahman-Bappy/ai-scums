@@ -29,8 +29,15 @@ class AdminAdmissionStatsTool extends BaseDataTool implements AIDataToolInterfac
 
     public function execute(User $user): array
     {
-        $total = Student::count();
-        $byStatus = Student::query()->selectRaw('status, count(*) as c')
+        $tenantId = $this->tenantId();
+
+        if ($tenantId === null) {
+            return ['summary' => 'No institution in scope.', 'data' => []];
+        }
+
+        $total = Student::where('institution_id', $tenantId)->count();
+        $byStatus = Student::query()->where('institution_id', $tenantId)
+            ->selectRaw('status, count(*) as c')
             ->groupBy('status')->pluck('c', 'status')->all();
 
         return [

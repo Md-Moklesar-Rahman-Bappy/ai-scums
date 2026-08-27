@@ -4,10 +4,12 @@
     <div class="card card-stat">
         <div class="card-body">
             <div class="mb-2">
+                @if(auth()->user()->isSuperAdmin())
                 <label class="form-label small">Provider</label>
                 <select id="provider" class="form-select form-select-sm d-inline w-auto">
                     @foreach($providers as $p)<option value="{{ $p }}">{{ ucfirst($p) }}</option>@endforeach
                 </select>
+                @endif
             </div>
             <div id="chat" class="border rounded p-3 mb-3" style="height:360px; overflow-y:auto; background:#fff;">
                 <div class="text-muted small">Ask me anything about attendance, exams, fees or schedules. I am read-only.</div>
@@ -42,7 +44,10 @@
             addBubble(q, 'user');
             document.getElementById('query').value = '';
             const btn = this.querySelector('button'); btn.disabled = true;
-            axios.post('{{ route('assistant.ask') }}', { query: q, provider: document.getElementById('provider').value })
+            const providerEl = document.getElementById('provider');
+            const payload = { query: q };
+            if (providerEl) { payload.provider = providerEl.value; }
+            axios.post('{{ route('assistant.ask') }}', payload)
                 .then(r => addBubble(r.data.answer + '  [' + r.data.intent + ']', 'bot'))
                 .catch(() => addBubble('Something went wrong.', 'bot'))
                 .finally(() => btn.disabled = false);

@@ -11,9 +11,10 @@ declare(strict_types=1);
  */
 return [
     /*
-     * Active provider: openai | claude | gemini | local
+     * Active provider: openai | claude | gemini | local | mock
+     * "mock" is an offline, key-free provider for demos and tests.
      */
-    'provider' => env('AI_PROVIDER', 'openai'),
+    'provider' => env('AI_PROVIDER', 'mock'),
 
     /*
      * Global tuning applied to every provider unless overridden.
@@ -40,5 +41,9 @@ return [
         'key' => env('AI_LOCAL_KEY'),
         'endpoint' => env('AI_LOCAL_ENDPOINT', 'http://localhost:11434/v1/chat/completions'),
         'model' => env('AI_LOCAL_MODEL', 'local-model'),
+    ],
+
+    'mock' => [
+        'model' => env('AI_MOCK_MODEL', 'mock-offline'),
     ],
 ];

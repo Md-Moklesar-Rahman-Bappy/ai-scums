@@ -61,6 +61,14 @@ class InstitutionController extends Controller
     }
 
     /**
+     * Display a single institution.
+     */
+    public function show(Institution $institution): View
+    {
+        return view('institutions.show', compact('institution'));
+    }
+
+    /**
      * Update an institution.
      */
     public function update(InstitutionRequest $request, Institution $institution): RedirectResponse
