@@ -25,4 +25,4 @@ jobs:
         run: ls -la vendor/bin
 
       - name: Run PHPStan
-        run: vendor/bin/phpstan analyse
+        run: vendor/bin/phpstan analyse --memory-limit=1G
