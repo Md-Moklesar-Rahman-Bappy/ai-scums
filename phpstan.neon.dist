@@ -1,16 +1,21 @@
 includes:
-    - ./vendor/larastan/larastan/extension.neon
+    - vendor/larastan/larastan/extension.neon
 
 parameters:
-    paths:
-        - app
-        - routes
-        - config
-        - database
-
     level: 5
 
+    paths:
+        - app
+        - database
+
+    tmpDir: storage/framework/cache/phpstan
+
+    checkMissingIterableValueType: true
+    treatPhpDocTypesAsCertain: true
+    reportUnmatchedIgnoredErrors: true
+
     excludePaths:
-        - vendor/*
-        - storage/*
-        - bootstrap/cache/*
+        analyse:
+            - bootstrap/cache/*
+            - storage/*
+            - vendor/*
