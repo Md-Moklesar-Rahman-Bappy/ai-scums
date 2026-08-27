@@ -1,5 +1,9 @@
 <?php
 
+use App\Providers\AIAssistantServiceProvider;
+use App\Providers\AppServiceProvider;
+
 return [
-    App\Providers\AppServiceProvider::class,
+    AppServiceProvider::class,
+    AIAssistantServiceProvider::class,
 ];

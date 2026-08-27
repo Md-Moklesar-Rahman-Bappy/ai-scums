@@ -22,9 +22,13 @@ class AuthorizationGate
      * @var array<string, array<int, string>>
      */
     private array $policy = [
-        'super_admin' => [Intent::all()[0], Intent::all()[1], Intent::all()[2], Intent::all()[3],
-            Intent::all()[4], Intent::all()[5], Intent::all()[6], Intent::all()[7],
-            Intent::all()[8], Intent::all()[9], Intent::GENERAL],
+        'super_admin' => [
+            Intent::STUDENT_ATTENDANCE, Intent::STUDENT_NEXT_EXAM, Intent::STUDENT_CGPA,
+            Intent::STUDENT_SCHEDULE, Intent::TEACHER_LOW_ATTENDANCE,
+            Intent::TEACHER_COURSE_PERFORMANCE, Intent::TEACHER_PENDING_EVALUATIONS,
+            Intent::ADMIN_ADMISSION_STATS, Intent::ADMIN_ENROLLMENT_REPORT,
+            Intent::ADMIN_OUTSTANDING_FEES, Intent::GENERAL,
+        ],
         'institution_admin' => [
             Intent::STUDENT_ATTENDANCE, Intent::STUDENT_NEXT_EXAM, Intent::STUDENT_CGPA,
             Intent::STUDENT_SCHEDULE, Intent::TEACHER_LOW_ATTENDANCE,
