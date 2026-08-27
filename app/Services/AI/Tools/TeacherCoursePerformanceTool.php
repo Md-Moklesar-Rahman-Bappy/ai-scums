@@ -42,11 +42,11 @@ class TeacherCoursePerformanceTool extends BaseDataTool implements AIDataToolInt
         })
             ->with('exam.subject')
             ->get()
-            ->groupBy(fn ($m) => $m->exam->subject?->name ?? 'Unknown')
+            ->groupBy(fn ($m) => $m->exam->subject->name ?? 'Unknown')
             ->map(fn ($group) => [
-            'average' => round($group->avg('marks_obtained'), 2),
-            'students' => $group->pluck('student_id')->unique()->count(),
-        ])
+                'average' => round($group->avg('marks_obtained'), 2),
+                'students' => $group->pluck('student_id')->unique()->count(),
+            ])
             ->all();
 
         return [

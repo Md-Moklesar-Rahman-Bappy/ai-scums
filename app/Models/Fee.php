@@ -35,7 +35,7 @@ class Fee extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Student, $this>
      */
     public function student()
     {
@@ -43,7 +43,7 @@ class Fee extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<FeeType, $this>
      */
     public function feeType()
     {
@@ -51,7 +51,7 @@ class Fee extends BaseModel
     }
 
     /**
-     * @return HasMany
+     * @return HasMany<FeePayment, $this>
      */
     public function payments()
     {

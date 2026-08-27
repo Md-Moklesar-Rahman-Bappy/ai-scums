@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Models\Institution;
 use App\Repositories\InstitutionRepository;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 
 /**
@@ -23,9 +23,9 @@ class InstitutionService
     /**
      * Paginated list of institutions.
      *
-     * @return Paginator<Institution>
+     * @return LengthAwarePaginator<int, Institution>
      */
-    public function list(int $perPage = 15): Paginator
+    public function list(int $perPage = 15): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
     }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Services\Audit;
 
 use App\Models\AuditLog;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,9 +37,9 @@ class AuditLogService
     {
         $request ??= request();
 
+        /** @var User|null $user */
         $user = Auth::user();
-        $institutionId = $user?->institution_id
-            ?? (method_exists($user, 'isSuperAdmin') && $user?->isSuperAdmin() ? null : null);
+        $institutionId = $user?->institution_id;
 
         AuditLog::create([
             'user_id' => $user?->id,
@@ -48,8 +49,8 @@ class AuditLogService
             'model_id' => $context['model_id'] ?? null,
             'old_values' => $context['old_values'] ?? null,
             'new_values' => $context['new_values'] ?? null,
-            'ip_address' => $request?->ip(),
-            'user_agent' => $request?->userAgent(),
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
         ]);
     }
 }

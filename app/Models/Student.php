@@ -36,7 +36,7 @@ class Student extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<User, $this>
      */
     public function user()
     {
@@ -44,7 +44,7 @@ class Student extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<SchoolClass, $this>
      */
     public function schoolClass()
     {
@@ -52,7 +52,7 @@ class Student extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Section, $this>
      */
     public function section()
     {
@@ -60,7 +60,7 @@ class Student extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Program, $this>
      */
     public function program()
     {
@@ -68,7 +68,7 @@ class Student extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Semester, $this>
      */
     public function semester()
     {
@@ -78,7 +78,7 @@ class Student extends BaseModel
     /**
      * Parents/guardians of this student.
      *
-     * @return BelongsToMany
+     * @return BelongsToMany<ParentModel, $this>
      */
     public function parents()
     {
@@ -90,7 +90,7 @@ class Student extends BaseModel
     /**
      * Attendance records.
      *
-     * @return HasMany
+     * @return HasMany<Attendance, $this>
      */
     public function attendances()
     {
@@ -100,7 +100,7 @@ class Student extends BaseModel
     /**
      * Exam marks.
      *
-     * @return HasMany
+     * @return HasMany<ExamMark, $this>
      */
     public function examMarks()
     {
@@ -110,7 +110,7 @@ class Student extends BaseModel
     /**
      * Fees assigned to this student.
      *
-     * @return HasMany
+     * @return HasMany<Fee, $this>
      */
     public function fees()
     {

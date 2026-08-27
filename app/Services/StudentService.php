@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Models\Student;
 use App\Repositories\StudentRepository;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Str;
 
 /**
@@ -21,9 +21,9 @@ class StudentService
     public function __construct(private readonly StudentRepository $repository) {}
 
     /**
-     * @return Paginator<Student>
+     * @return LengthAwarePaginator<int, Student>
      */
-    public function list(int $perPage = 15): Paginator
+    public function list(int $perPage = 15): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
     }

@@ -10,6 +10,8 @@ use App\Models\Teacher;
  * TeacherRepository.
  *
  * Tenant-scoped data access for {@see Teacher}.
+ *
+ * @extends BaseRepository<Teacher>
  */
 class TeacherRepository extends BaseRepository
 {

@@ -110,7 +110,7 @@ class AssistantService
             .'changing marks, approving admissions, modifying attendance or processing payments. '
             ."Answer concisely using only the provided data context. Detected intent: {$intent}.";
 
-        $dataContext = $context['summary'] ?? '';
+        $dataContext = $context['summary'];
         if (! empty($context['data'])) {
             $dataContext .= "\nDATA: ".json_encode($context['data']);
         }

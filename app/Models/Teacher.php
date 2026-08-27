@@ -30,7 +30,7 @@ class Teacher extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<User, $this>
      */
     public function user()
     {
@@ -38,7 +38,7 @@ class Teacher extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Department, $this>
      */
     public function department()
     {
@@ -48,7 +48,7 @@ class Teacher extends BaseModel
     /**
      * Allocated subjects.
      *
-     * @return BelongsToMany
+     * @return BelongsToMany<Subject, $this>
      */
     public function subjects()
     {

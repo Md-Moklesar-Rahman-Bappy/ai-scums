@@ -12,6 +12,8 @@ use App\Models\Institution;
  * Data access for {@see Institution} (the tenant root). Institutions are NOT
  * tenant-scoped: the global TenantScoped scope is intentionally absent so the
  * platform may list and manage all tenants.
+ *
+ * @extends BaseRepository<Institution>
  */
 class InstitutionRepository extends BaseRepository
 {

@@ -8,6 +8,8 @@ use App\Models\Attendance;
 
 /**
  * AttendanceRepository.
+ *
+ * @extends BaseRepository<Attendance>
  */
 class AttendanceRepository extends BaseRepository
 {

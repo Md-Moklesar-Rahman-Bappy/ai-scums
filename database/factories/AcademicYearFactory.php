@@ -18,8 +18,10 @@ class AcademicYearFactory extends Factory
 
     public function definition(): array
     {
+        $startYear = (int) $this->faker->year();
+
         return [
-            'name' => $this->faker->year().'-'.($this->faker->year() + 1),
+            'name' => $startYear.'-'.($startYear + 1),
             'start_date' => $this->faker->dateTimeBetween('-1 year', 'now'),
             'end_date' => $this->faker->dateTimeBetween('now', '+1 year'),
             'is_current' => false,

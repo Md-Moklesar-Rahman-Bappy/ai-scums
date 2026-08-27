@@ -28,7 +28,7 @@ class SchoolClass extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<AcademicYear, $this>
      */
     public function academicYear()
     {
@@ -36,7 +36,7 @@ class SchoolClass extends BaseModel
     }
 
     /**
-     * @return HasMany
+     * @return HasMany<Section, $this>
      */
     public function sections()
     {
@@ -44,7 +44,7 @@ class SchoolClass extends BaseModel
     }
 
     /**
-     * @return HasMany
+     * @return HasMany<Student, $this>
      */
     public function students()
     {

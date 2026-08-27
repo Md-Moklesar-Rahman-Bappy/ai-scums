@@ -57,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * The institution this user belongs to (null for super admin).
      *
-     * @return BelongsTo
+     * @return BelongsTo<Institution, $this>
      */
     public function institution()
     {
@@ -67,7 +67,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Student profile, if any.
      *
-     * @return HasOne
+     * @return HasOne<Student, $this>
      */
     public function student()
     {
@@ -77,7 +77,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Teacher profile, if any.
      *
-     * @return HasOne
+     * @return HasOne<Teacher, $this>
      */
     public function teacher()
     {
@@ -87,7 +87,7 @@ class User extends Authenticatable implements MustVerifyEmail
     /**
      * Parent profile, if any.
      *
-     * @return HasOne
+     * @return HasOne<ParentModel, $this>
      */
     public function parent()
     {

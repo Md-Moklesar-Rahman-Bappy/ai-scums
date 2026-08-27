@@ -30,7 +30,7 @@ interface AIDataToolInterface
     /**
      * Retrieve the context for the given user.
      *
-     * @return array{summary: string, data: array<int, mixed>}
+     * @return array{summary: string, data: array<array-key, mixed>}
      */
     public function execute(User $user): array;
 }

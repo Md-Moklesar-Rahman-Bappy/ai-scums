@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Repositories;
 
 use App\Repositories\Contracts\RepositoryInterface;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
@@ -34,9 +34,15 @@ abstract class BaseRepository implements RepositoryInterface
      * Create a fresh query builder for the model (without global scopes
      * being bypassed - tenant scope remains active).
      */
+    /**
+     * Create a fresh query builder for the model (without global scopes
+     * being bypassed - tenant scope remains active).
+     *
+     * @return Builder<T>
+     */
     protected function query(): Builder
     {
-        /** @var Builder $builder */
+        /** @var Builder<T> $builder */
         $builder = $this->modelClass()::query();
 
         return $builder;
@@ -49,15 +55,18 @@ abstract class BaseRepository implements RepositoryInterface
      */
     public function all(): Collection
     {
-        return $this->query()->get();
+        /** @var Collection<int, T> $models */
+        $models = $this->query()->get();
+
+        return $models;
     }
 
     /**
      * {@inheritDoc}
      *
-     * @return Paginator<T>
+     * @return LengthAwarePaginator<int, T>
      */
-    public function paginate(int $perPage = 15): Paginator
+    public function paginate(int $perPage = 15): LengthAwarePaginator
     {
         return $this->query()->paginate($perPage);
     }
@@ -105,6 +114,7 @@ abstract class BaseRepository implements RepositoryInterface
      * {@inheritDoc}
      *
      * @param  T  $model
+     * @return T
      */
     public function update(Model $model, array $attributes): Model
     {

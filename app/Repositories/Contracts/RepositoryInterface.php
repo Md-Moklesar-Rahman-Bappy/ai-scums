@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repositories\Contracts;
 
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 
@@ -29,9 +29,9 @@ interface RepositoryInterface
     /**
      * Paginated listing.
      *
-     * @return Paginator<T>
+     * @return LengthAwarePaginator<int, T>
      */
-    public function paginate(int $perPage = 15): Paginator;
+    public function paginate(int $perPage = 15): LengthAwarePaginator;
 
     /**
      * Find a record by id.

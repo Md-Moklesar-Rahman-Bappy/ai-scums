@@ -37,9 +37,9 @@ class DatabaseSeeder extends Seeder
         // Platform super administrator (cross-tenant). A random, strong password
         // is generated when not supplied via DEMO_SUPERADMIN_PASSWORD so the
         // seeded credential is never a guessable default.
-        $superPassword = env('DEMO_SUPERADMIN_PASSWORD', Str::random(24));
+        $superPassword = config('demo.superadmin_password') ?? Str::random(24);
         $super = User::firstOrCreate(
-            ['email' => env('DEMO_SUPERADMIN_EMAIL', 'superadmin@iems.test')],
+            ['email' => config('demo.superadmin_email', 'superadmin@iems.test')],
             [
                 'name' => 'Platform Super Admin',
                 'password' => Hash::make($superPassword),
@@ -59,9 +59,9 @@ class DatabaseSeeder extends Seeder
             ]
         );
 
-        $adminPassword = env('DEMO_ADMIN_PASSWORD', Str::random(24));
+        $adminPassword = config('demo.admin_password') ?? Str::random(24);
         $admin = User::firstOrCreate(
-            ['email' => env('DEMO_ADMIN_EMAIL', 'admin@demo.test')],
+            ['email' => config('demo.admin_email', 'admin@demo.test')],
             [
                 'name' => 'Demo Admin',
                 'password' => Hash::make($adminPassword),

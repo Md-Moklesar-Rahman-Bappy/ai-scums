@@ -6,7 +6,6 @@ namespace App\Services;
 
 use App\Models\Attendance;
 use App\Models\Student;
-use App\Repositories\AttendanceRepository;
 use App\Services\Tenant\TenantManager;
 
 /**
@@ -17,8 +16,6 @@ use App\Services\Tenant\TenantManager;
  */
 class AttendanceService
 {
-    public function __construct(private readonly AttendanceRepository $repository) {}
-
     /**
      * Mark attendance for a set of students on a date.
      *

@@ -12,6 +12,8 @@ use App\Models\Student;
  * Tenant-scoped data access for {@see Student}. The BaseRepository + the
  * TenantScoped global scope guarantee every query is isolated to the active
  * institution.
+ *
+ * @extends BaseRepository<Student>
  */
 class StudentRepository extends BaseRepository
 {

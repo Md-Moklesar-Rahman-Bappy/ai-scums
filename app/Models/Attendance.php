@@ -33,7 +33,7 @@ class Attendance extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Student, $this>
      */
     public function student()
     {
@@ -41,7 +41,7 @@ class Attendance extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Subject, $this>
      */
     public function subject()
     {
@@ -49,7 +49,7 @@ class Attendance extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Section, $this>
      */
     public function section()
     {
@@ -59,7 +59,7 @@ class Attendance extends BaseModel
     /**
      * Percentage of present records for a set of attendances.
      *
-     * @param  Collection<int, self>  $records
+     * @param  Collection<int, Attendance>  $records
      */
     public static function percentageFor(Collection $records): float
     {

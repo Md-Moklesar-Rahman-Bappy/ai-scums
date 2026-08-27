@@ -39,7 +39,7 @@ class Subject extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<SchoolClass, $this>
      */
     public function schoolClass()
     {
@@ -47,7 +47,7 @@ class Subject extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Section, $this>
      */
     public function section()
     {
@@ -55,7 +55,7 @@ class Subject extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Department, $this>
      */
     public function department()
     {
@@ -63,7 +63,7 @@ class Subject extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Semester, $this>
      */
     public function semester()
     {
@@ -73,7 +73,7 @@ class Subject extends BaseModel
     /**
      * Teachers allocated to this subject.
      *
-     * @return BelongsToMany
+     * @return BelongsToMany<Teacher, $this>
      */
     public function teachers()
     {

@@ -8,6 +8,8 @@ use App\Models\Exam;
 
 /**
  * ExamRepository.
+ *
+ * @extends BaseRepository<Exam>
  */
 class ExamRepository extends BaseRepository
 {

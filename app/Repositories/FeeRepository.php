@@ -8,6 +8,8 @@ use App\Models\Fee;
 
 /**
  * FeeRepository.
+ *
+ * @extends BaseRepository<Fee>
  */
 class FeeRepository extends BaseRepository
 {

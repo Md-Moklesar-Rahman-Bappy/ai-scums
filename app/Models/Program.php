@@ -25,7 +25,7 @@ class Program extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Department, $this>
      */
     public function department()
     {
@@ -33,7 +33,7 @@ class Program extends BaseModel
     }
 
     /**
-     * @return HasMany
+     * @return HasMany<Semester, $this>
      */
     public function semesters()
     {

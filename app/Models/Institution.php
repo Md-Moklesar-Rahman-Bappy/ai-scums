@@ -33,7 +33,7 @@ class Institution extends Model
     use SoftDeletes;
 
     /**
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name', 'type', 'slug', 'email', 'phone', 'address',
@@ -51,7 +51,7 @@ class Institution extends Model
     /**
      * Users that belong to this institution.
      *
-     * @return HasMany
+     * @return HasMany<User, $this>
      */
     public function users()
     {
@@ -61,7 +61,7 @@ class Institution extends Model
     /**
      * Students that belong to this institution.
      *
-     * @return HasMany
+     * @return HasMany<Student, $this>
      */
     public function students()
     {

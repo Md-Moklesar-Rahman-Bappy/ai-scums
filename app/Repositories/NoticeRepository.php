@@ -8,6 +8,8 @@ use App\Models\Notice;
 
 /**
  * NoticeRepository.
+ *
+ * @extends BaseRepository<Notice>
  */
 class NoticeRepository extends BaseRepository
 {

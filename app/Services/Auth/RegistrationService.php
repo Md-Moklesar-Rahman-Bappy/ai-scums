@@ -22,8 +22,6 @@ class RegistrationService
 {
     /**
      * Register a new institution with its founding admin.
-     *
-     * @param  array{institution_name: string, institution_type: string, admin_name: string, email: string, phone: string|null, password: string}  $data
      */
     public function __construct(private readonly AuditLogService $audit) {}
 

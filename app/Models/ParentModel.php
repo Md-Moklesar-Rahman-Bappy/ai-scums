@@ -26,7 +26,7 @@ class ParentModel extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<User, $this>
      */
     public function user()
     {
@@ -36,7 +36,7 @@ class ParentModel extends BaseModel
     /**
      * Children of this guardian.
      *
-     * @return BelongsToMany
+     * @return BelongsToMany<Student, $this>
      */
     public function students()
     {

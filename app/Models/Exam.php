@@ -33,7 +33,7 @@ class Exam extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Subject, $this>
      */
     public function subject()
     {
@@ -41,7 +41,7 @@ class Exam extends BaseModel
     }
 
     /**
-     * @return HasMany
+     * @return HasMany<ExamMark, $this>
      */
     public function marks()
     {

@@ -38,8 +38,8 @@ class MockProvider extends AbstractLLMProvider
     {
         $userMessage = '';
         foreach ($messages as $message) {
-            if (($message['role'] ?? '') === 'user') {
-                $userMessage = $message['content'] ?? '';
+            if ($message['role'] === 'user') {
+                $userMessage = $message['content'];
             }
         }
 

@@ -36,17 +36,17 @@ class AdminEnrollmentReportTool extends BaseDataTool implements AIDataToolInterf
         }
 
         $byClass = Student::query()->where('institution_id', $tenantId)->whereNotNull('class_id')
-            ->selectRaw('class_id, count(*) as c')
+            ->selectRaw('class_id, count(*) as students_count')
             ->groupBy('class_id')->with('schoolClass')
             ->get()
-            ->mapWithKeys(fn ($s) => [$s->schoolClass?->name ?? 'N/A' => $s->c])
+            ->mapWithKeys(fn ($s) => [$s->schoolClass->name ?? 'N/A' => $s->getAttribute('students_count')])
             ->all();
 
         $byProgram = Student::query()->where('institution_id', $tenantId)->whereNotNull('program_id')
-            ->selectRaw('program_id, count(*) as c')
+            ->selectRaw('program_id, count(*) as students_count')
             ->groupBy('program_id')->with('program')
             ->get()
-            ->mapWithKeys(fn ($s) => [$s->program?->name ?? 'N/A' => $s->c])
+            ->mapWithKeys(fn ($s) => [$s->program->name ?? 'N/A' => $s->getAttribute('students_count')])
             ->all();
 
         return [

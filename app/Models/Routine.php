@@ -37,7 +37,7 @@ class Routine extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Subject, $this>
      */
     public function subject()
     {
@@ -45,7 +45,7 @@ class Routine extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Teacher, $this>
      */
     public function teacher()
     {
@@ -53,7 +53,7 @@ class Routine extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Section, $this>
      */
     public function section()
     {

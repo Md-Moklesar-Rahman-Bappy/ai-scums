@@ -11,7 +11,6 @@ use App\Models\User;
 use App\Services\Audit\AuditLogService;
 use App\Services\Auth\RegistrationService;
 use Illuminate\Auth\Events\Verified;
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -157,7 +156,7 @@ class AuthController extends Controller
         $request->session()->regenerate();
 
         // Send the verification email unless already verified.
-        if ($user instanceof MustVerifyEmail && ! $user->hasVerifiedEmail()) {
+        if (! $user->hasVerifiedEmail()) {
             $user->sendEmailVerificationNotification();
         }
 

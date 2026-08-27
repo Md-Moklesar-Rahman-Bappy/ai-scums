@@ -7,7 +7,7 @@ namespace App\Services;
 use App\Models\Exam;
 use App\Models\ExamMark;
 use App\Repositories\ExamRepository;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * ExamService.
@@ -22,8 +22,10 @@ class ExamService
 
     /**
      * List exams paginated.
+     *
+     * @return LengthAwarePaginator<int, Exam>
      */
-    public function list(int $perPage = 15): Paginator
+    public function list(int $perPage = 15): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
     }

@@ -6,7 +6,7 @@ namespace App\Services;
 
 use App\Models\Notice;
 use App\Repositories\NoticeRepository;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * NoticeService.
@@ -19,9 +19,9 @@ class NoticeService
     public function __construct(private readonly NoticeRepository $repository) {}
 
     /**
-     * @return Paginator<Notice>
+     * @return LengthAwarePaginator<int, Notice>
      */
-    public function list(int $perPage = 15): Paginator
+    public function list(int $perPage = 15): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
     }

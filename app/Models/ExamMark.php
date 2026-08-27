@@ -33,7 +33,7 @@ class ExamMark extends BaseModel
     ];
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Exam, $this>
      */
     public function exam()
     {
@@ -41,7 +41,7 @@ class ExamMark extends BaseModel
     }
 
     /**
-     * @return BelongsTo
+     * @return BelongsTo<Student, $this>
      */
     public function student()
     {

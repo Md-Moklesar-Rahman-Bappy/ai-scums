@@ -7,7 +7,7 @@ namespace App\Services;
 use App\Models\Fee;
 use App\Models\FeePayment;
 use App\Repositories\FeeRepository;
-use Illuminate\Contracts\Pagination\Paginator;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * FeeService.
@@ -20,9 +20,9 @@ class FeeService
     public function __construct(private readonly FeeRepository $repository) {}
 
     /**
-     * @return Paginator<Fee>
+     * @return LengthAwarePaginator<int, Fee>
      */
-    public function list(int $perPage = 15): Paginator
+    public function list(int $perPage = 15): LengthAwarePaginator
     {
         return $this->repository->paginate($perPage);
     }

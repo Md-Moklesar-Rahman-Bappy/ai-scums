@@ -8,6 +8,8 @@ use App\Models\Routine;
 
 /**
  * RoutineRepository.
+ *
+ * @extends BaseRepository<Routine>
  */
 class RoutineRepository extends BaseRepository
 {
