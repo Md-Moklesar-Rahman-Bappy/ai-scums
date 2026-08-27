@@ -8,7 +8,7 @@
     "require": {
         "php": "^8.2",
         "laravel/framework": "^12.61",
-        "laravel/tinker": "^2.9",
+        "laravel/tinker": "^3.0",
         "spatie/laravel-permission": "^6.25"
     },
     "require-dev": {
