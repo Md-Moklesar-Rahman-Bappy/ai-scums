@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Notifications\VerifyEmailNotification;
 use Database\Factories\UserFactory;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
@@ -26,7 +27,7 @@ use Spatie\Permission\Traits\HasRoles;
  * @property bool $is_super_admin
  * @property bool $is_active
  */
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
     /** @use HasFactory<UserFactory> */
     use HasFactory;
@@ -99,5 +100,13 @@ class User extends Authenticatable
     public function isSuperAdmin(): bool
     {
         return (bool) $this->is_super_admin;
+    }
+
+    /**
+     * Send the email verification notification using the branded notification.
+     */
+    public function sendEmailVerificationNotification(): void
+    {
+        $this->notify(new VerifyEmailNotification);
     }
 }
