@@ -7,7 +7,7 @@
     </div>
     <div class="card card-stat">
         <div class="table-responsive">
-            <table class="table table-hover mb-0" id="dataTable">
+            <table class="table table-modern mb-0" id="dataTable">
                 <thead><tr><th>Employee ID</th><th>Department</th><th>Designation</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>
                     @forelse($teachers as $teacher)

@@ -11,7 +11,7 @@
     </div>
     <div class="card card-stat">
         <div class="table-responsive">
-            <table class="table table-hover mb-0" id="dataTable">
+            <table class="table table-modern mb-0" id="dataTable">
                 <thead><tr><th>Student</th><th>Amount</th><th>Paid</th><th>Status</th><th>Actions</th></tr></thead>
                 <tbody>
                     @forelse($fees as $fee)

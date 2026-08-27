@@ -6,7 +6,7 @@
 
     <div class="card card-stat">
         <div class="table-responsive">
-            <table class="table table-hover mb-0" id="dataTable">
+            <table class="table table-modern mb-0" id="dataTable">
                 <thead>
                     <tr><th>Name</th><th>Type</th><th>Email</th><th>Status</th><th>Actions</th></tr>
                 </thead>
@@ -14,11 +14,11 @@
                     @forelse($institutions as $institution)
                         <tr>
                             <td>{{ $institution->name }}</td>
-                            <td><span class="badge bg-info">{{ $institution->type }}</span></td>
+                            <td><span class="badge badge-soft-info">{{ $institution->type }}</span></td>
                             <td>{{ $institution->email }}</td>
                             <td>
-                                @if($institution->is_active)<span class="badge bg-success">Active</span>
-                                @else <span class="badge bg-secondary">Inactive</span> @endif
+                                @if($institution->is_active)<span class="badge badge-soft-success">Active</span>
+                                @else <span class="badge badge-soft-secondary">Inactive</span> @endif
                             </td>
                             <td>
                                 <a href="{{ route('institutions.edit', $institution) }}" class="btn btn-sm btn-outline-secondary">Edit</a>

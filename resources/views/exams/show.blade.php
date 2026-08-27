@@ -11,7 +11,7 @@
                 <thead><tr><th>Student</th><th>Marks</th><th>Grade</th></tr></thead>
                 <tbody>
                     @forelse($exam->marks as $mark)
-                        <tr><td>{{ $mark->student?->admission_no }}</td><td>{{ $mark->marks_obtained }}/{{ $mark->total_marks }}</td><td><span class="badge bg-info">{{ $mark->grade }}</span></td></tr>
+                        <tr><td>{{ $mark->student?->admission_no }}</td><td>{{ $mark->marks_obtained }}/{{ $mark->total_marks }}</td><td><span class="badge badge-soft-info">{{ $mark->grade }}</span></td></tr>
                     @empty
                         <tr><td colspan="3" class="text-muted text-center">No marks entered.</td></tr>
                     @endforelse

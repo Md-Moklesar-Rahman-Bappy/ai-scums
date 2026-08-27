@@ -11,7 +11,7 @@
                 <div class="card card-stat p-3">
                     <div class="d-flex justify-content-between">
                         <span class="badge bg-{{ $notice->type=='event'?'info':($notice->type=='notification'?'warning':'primary') }}">{{ $notice->type }}</span>
-                        <span class="badge bg-secondary">{{ $notice->audience }}</span>
+                        <span class="badge badge-soft-secondary">{{ $notice->audience }}</span>
                     </div>
                     <h6 class="fw-bold mt-2">{{ $notice->title }}</h6>
                     <p class="small text-muted mb-2">{{ Str::limit($notice->body, 120) }}</p>

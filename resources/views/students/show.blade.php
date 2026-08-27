@@ -35,7 +35,7 @@
                                 <td>{{ $mark->exam->name }}</td>
                                 <td>{{ $mark->exam->subject?->name }}</td>
                                 <td>{{ $mark->marks_obtained }}/{{ $mark->total_marks }}</td>
-                                <td><span class="badge bg-info">{{ $mark->grade }}</span></td>
+                                <td><span class="badge badge-soft-info">{{ $mark->grade }}</span></td>
                             </tr>
                         @empty
                             <tr><td colspan="4" class="text-muted">No results.</td></tr>
